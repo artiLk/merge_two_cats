@@ -15,7 +15,10 @@ exports.mergeCats = async (res, data) => {
   const image2 = await getCatImage(secondUrl);
 
   // send a bad response when cataas return an error
-  if (image1.response.status !== 200 || image1.response.status !== 200) {
+  if (
+    (image1.response && image1.response.status !== 200) ||
+    (image1.response && image1.response.status !== 200)
+  ) {
     res.status(400).json({ error: "Images not load from cataas" });
   }
 
